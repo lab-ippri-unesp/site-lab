@@ -1,0 +1,4 @@
+#!/bin/sh
+# Hook compartilhado (core.hooksPath=.githooks, configurado no "prepare" do package.json).
+# Mantém o mesmo portão de qualidade do CI antes de cada commit.
+npm run typecheck && npm run lint

@@ -1,0 +1,45 @@
+{
+  "name": "site-lab",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Site público do Laboratório Multiusuário do IPPRI (UNESP) — Astro estático. Base reutilizável para os sites do ecossistema.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro",
+    "typecheck": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "ci": "astro check && eslint . && npm run build",
+    "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.12",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/space-grotesk": "^5.2.5",
+    "@tailwindcss/vite": "4.1.18",
+    "astro": "^6.3.0",
+    "astro-pagefind": "^1.8.3",
+    "daisyui": "^5.0.0",
+    "pagefind": "^1.5.0",
+    "sharp": "^0.34.0",
+    "tailwindcss": "4.1.18",
+    "theme-change": "^2.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/node": "^22.10.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "prettier": "^3.8.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.20.0"
+  }
+}

@@ -1,0 +1,71 @@
+---
+import { t, type Lang } from '~/i18n/translations';
+import { localizedPath, withBase } from '~/utils/paths';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-neutral text-neutral-content">
+  <div class="container mx-auto px-4 py-12 grid gap-10 md:grid-cols-3 text-sm">
+    <div>
+      <p class="font-display text-lg font-bold">{t(lang, 'site.title')}</p>
+      <p class="mt-3 opacity-80 leading-relaxed">{t(lang, 'site.tagline')}</p>
+    </div>
+    <nav aria-label={t(lang, 'a11y.nav_footer')}>
+      <p class="section-title text-sm text-accent">{t(lang, 'footer.nav')}</p>
+      <ul class="mt-3 space-y-2">
+        <li>
+          <a class="link link-hover opacity-90" href={localizedPath(lang, 'sobre')}
+            >{t(lang, 'nav.about')}</a
+          >
+        </li>
+        <li>
+          <a class="link link-hover opacity-90" href={localizedPath(lang, 'equipamentos')}
+            >{t(lang, 'nav.equipment')}</a
+          >
+        </li>
+        <li>
+          <a class="link link-hover opacity-90" href={localizedPath(lang, 'equipe')}
+            >{t(lang, 'nav.team')}</a
+          >
+        </li>
+        <li>
+          <a class="link link-hover opacity-90" href={localizedPath(lang, 'noticias')}
+            >{t(lang, 'nav.news')}</a
+          >
+        </li>
+        <li>
+          <a class="link link-hover opacity-90" href={localizedPath(lang, 'acesso')}
+            >{t(lang, 'nav.access')}</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <p class="section-title text-sm text-accent">{t(lang, 'footer.institution')}</p>
+      <ul class="mt-3 space-y-2">
+        <!-- TODO(lab): confirmar links institucionais oficiais. -->
+        <li>
+          <a
+            class="link link-hover opacity-90"
+            href="https://www.ippri.unesp.br"
+            rel="noopener"
+            target="_blank">IPPRI · UNESP ↗</a
+          >
+        </li>
+        <li>
+          <a class="link link-hover opacity-90" href={withBase('rss.xml')}>RSS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-4 text-xs opacity-70">
+      <span>© {year} {t(lang, 'site.title')} — {t(lang, 'footer.rights')}</span>
+    </div>
+  </div>
+</footer>
