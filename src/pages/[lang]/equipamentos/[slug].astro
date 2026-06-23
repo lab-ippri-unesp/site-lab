@@ -1,0 +1,126 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { t, type Lang } from '~/i18n/translations';
+import { assetPath, localizedPath } from '~/utils/paths';
+import { entrySlug } from '~/utils/content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('equipamentos');
+  return entries.map((entry) => ({
+    params: { lang: entry.data.lang, slug: entrySlug(entry) },
+    props: {
+      entry,
+      availableLangs: entries
+        .filter((e) => entrySlug(e) === entrySlug(entry))
+        .map((e) => e.data.lang),
+    },
+  }));
+}
+
+const { entry, availableLangs } = Astro.props;
+const lang = entry.data.lang as Lang;
+const { Content } = await render(entry);
+const slug = entrySlug(entry);
+
+const statusClass = {
+  disponivel: 'badge-success',
+  manutencao: 'badge-warning',
+  indisponivel: 'badge-ghost',
+} as const;
+const statusLabel = {
+  disponivel: t(lang, 'equipment.status_available'),
+  manutencao: t(lang, 'equipment.status_maintenance'),
+  indisponivel: t(lang, 'equipment.status_unavailable'),
+} as const;
+---
+
+<BaseLayout
+  lang={lang}
+  title={entry.data.name}
+  description={entry.data.summary}
+  image={entry.data.image && assetPath(entry.data.image)}
+  pathInLang={`equipamentos/${slug}`}
+  availableLangs={availableLangs}
+>
+  <article class="container mx-auto px-4 py-12 max-w-4xl">
+    <Breadcrumbs
+      lang={lang}
+      trail={[
+        { label: t(lang, 'equipment.title'), href: localizedPath(lang, 'equipamentos') },
+        { label: entry.data.name },
+      ]}
+    />
+
+    <div class="flex flex-wrap items-center gap-2">
+      {entry.data.category && <span class="badge badge-outline">{entry.data.category}</span>}
+      <span class={`badge ${statusClass[entry.data.status]}`}>
+        {statusLabel[entry.data.status]}
+      </span>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-bold mt-3">{entry.data.name}</h1>
+    {entry.data.summary && <p class="opacity-80 mt-3 text-lg">{entry.data.summary}</p>}
+
+    {
+      entry.data.image && (
+        <img
+          src={assetPath(entry.data.image)}
+          alt={entry.data.name}
+          class="rounded-lg my-8 w-full"
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
+
+    <div class="grid md:grid-cols-3 gap-8 mt-8">
+      <div class="md:col-span-2 prose max-w-none">
+        <Content />
+      </div>
+
+      <aside class="md:col-span-1">
+        <div class="card bg-base-200 border border-base-300">
+          <div class="card-body gap-4">
+            {
+              entry.data.specs.length > 0 && (
+                <div>
+                  <p class="section-title text-sm text-primary">{t(lang, 'equipment.specs')}</p>
+                  <dl class="mt-2 space-y-1 text-sm">
+                    {entry.data.specs.map((s) => (
+                      <div class="flex justify-between gap-4 border-b border-base-300 py-1">
+                        <dt class="opacity-70">{s.label}</dt>
+                        <dd class="font-medium text-right">{s.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )
+            }
+            {
+              entry.data.location && (
+                <div>
+                  <p class="section-title text-sm text-primary">{t(lang, 'equipment.location')}</p>
+                  <p class="mt-1 text-sm">{entry.data.location}</p>
+                </div>
+              )
+            }
+            {
+              entry.data.booking_url && (
+                <a
+                  class="btn btn-primary btn-block"
+                  href={entry.data.booking_url}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  {t(lang, 'equipment.book')} ↗
+                </a>
+              )
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

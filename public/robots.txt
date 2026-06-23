@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO(lab): atualizar com o domínio definitivo.
+Sitemap: https://lab.ippri.unesp.br/sitemap.xml

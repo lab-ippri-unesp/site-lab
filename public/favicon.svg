@@ -1,0 +1,13 @@
+<!-- TODO(lab): substituir pelo favicon/logo oficial do laboratório. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Laboratório Multiusuário IPPRI">
+  <rect width="64" height="64" rx="14" fill="#0f766e" />
+  <!-- frasco/erlenmeyer estilizado -->
+  <path
+    d="M27 14h10v3h-2v9.2l9.7 16.8A5 5 0 0 1 40.4 51H23.6a5 5 0 0 1-4.3-7.5L29 26.7V17h-2z"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+  <path d="M24.5 38h15" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+</svg>

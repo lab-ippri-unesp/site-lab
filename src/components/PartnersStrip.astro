@@ -1,0 +1,61 @@
+---
+import { t, type Lang } from '~/i18n/translations';
+import { assetPath } from '~/utils/paths';
+
+interface Partner {
+  name: string;
+  href: string;
+  /** logo opcional em public/imagens/parceiros/; sem logo, mostra o nome como chip de texto */
+  logo?: string;
+}
+
+// TODO(lab): confirmar instituições/financiadores e adicionar os logos em
+// public/imagens/parceiros/ (ex.: unesp.png). Sem logo, o nome aparece como texto.
+const PARTNERS: Partner[] = [
+  { name: 'UNESP', href: 'https://www2.unesp.br' },
+  { name: 'IPPRI', href: 'https://www.ippri.unesp.br' },
+  { name: 'FAPESP', href: 'https://fapesp.br' },
+  { name: 'CNPq', href: 'https://www.gov.br/cnpq' },
+  { name: 'CAPES', href: 'https://www.gov.br/capes' },
+];
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<section class="py-12 bg-base-200" data-pagefind-ignore>
+  <div class="container mx-auto px-4">
+    <h2 class="section-title text-center text-xl text-base-content/70">
+      {t(lang, 'home.partners_title')}
+    </h2>
+    <ul class="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10 list-none p-0">
+      {
+        PARTNERS.map((p) => (
+          <li>
+            <a
+              href={p.href}
+              rel="noopener"
+              target="_blank"
+              aria-label={p.name}
+              class="block opacity-70 hover:opacity-100 transition"
+            >
+              {p.logo ? (
+                <img
+                  src={assetPath(p.logo)}
+                  alt={p.name}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-10 md:h-12 w-auto bg-white rounded px-2 py-1"
+                />
+              ) : (
+                <span class="font-display font-bold text-lg tracking-wide">{p.name}</span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

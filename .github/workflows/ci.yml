@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Cache build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            .astro
+            dist
+          key: build-${{ hashFiles('src/**/*', 'public/**/*', 'astro.config.mjs', 'package-lock.json') }}
+          restore-keys: |
+            build-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run CI (Typecheck, Lint, Build)
+        run: npm run ci
+
+      - name: Audit dependencies (High severity)
+        run: npm audit --audit-level=high || true

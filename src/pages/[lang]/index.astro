@@ -1,0 +1,187 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SectionBand from '~/components/SectionBand.astro';
+import NoticiaCard from '~/components/NoticiaCard.astro';
+import EquipamentoCard from '~/components/EquipamentoCard.astro';
+import PartnersStrip from '~/components/PartnersStrip.astro';
+import { LANGUAGES, t, type Lang } from '~/i18n/translations';
+import { localizedPath } from '~/utils/paths';
+import { entrySlug } from '~/utils/content';
+
+export function getStaticPaths() {
+  return LANGUAGES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+// Notícias recentes — sem versão no idioma, usa as em português.
+let allNews = await getCollection('noticias', (e) => e.data.lang === lang);
+const newsLang = allNews.length === 0 && lang !== 'pt' ? 'pt' : lang;
+if (newsLang !== lang) {
+  allNews = await getCollection('noticias', (e) => e.data.lang === 'pt');
+}
+const latest = allNews
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+// Equipamentos em destaque — sem versão no idioma, usa os em português.
+let equip = await getCollection('equipamentos', (e) => e.data.lang === lang);
+const equipLang = equip.length === 0 && lang !== 'pt' ? 'pt' : lang;
+if (equipLang !== lang) {
+  equip = await getCollection('equipamentos', (e) => e.data.lang === 'pt');
+}
+const featuredEquip = equip
+  .sort(
+    (a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.order - b.data.order
+  )
+  .slice(0, 3);
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'site.title')}
+  description={t(lang, 'site.tagline')}
+  pathInLang=""
+>
+  <!-- HERO -->
+  <section class="brand-gradient text-white">
+    <div class="container mx-auto px-4 py-16 md:py-28">
+      <div class="max-w-3xl">
+        <p class="font-bold uppercase tracking-[0.2em] text-sm text-accent">
+          {t(lang, 'home.hero_eyebrow')}
+        </p>
+        <h1 class="font-display text-4xl md:text-6xl font-bold mt-4 leading-[1.05] text-balance">
+          {t(lang, 'home.hero_title')}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl opacity-90 text-balance">
+          {t(lang, 'home.hero_subtitle')}
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+          <a
+            class="btn btn-lg bg-white text-primary border-none hover:bg-white/90"
+            href={localizedPath(lang, 'equipamentos')}
+          >
+            {t(lang, 'home.cta_equipment')}
+          </a>
+          <a
+            class="btn btn-lg btn-outline border-white text-white hover:bg-white/10 hover:border-white"
+            href={localizedPath(lang, 'acesso')}
+          >
+            {t(lang, 'home.cta_access')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O LABORATÓRIO -->
+  <SectionBand>
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="section-title text-3xl md:text-4xl text-primary">{t(lang, 'home.about_title')}</h2>
+      <div class="section-divider mx-auto mt-4"></div>
+      <p class="mt-6 text-lg leading-relaxed opacity-80">{t(lang, 'home.about_body')}</p>
+      <div class="mt-8">
+        <a class="btn btn-primary" href={localizedPath(lang, 'sobre')}>{t(lang, 'home.cta_about')}</a>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- EQUIPAMENTOS -->
+  <SectionBand variant="muted">
+    <div class="text-center">
+      <h2 class="section-title text-3xl md:text-4xl text-primary">
+        {t(lang, 'home.equipment_title')}
+      </h2>
+      <div class="section-divider mx-auto mt-4"></div>
+      <p class="mt-4 opacity-80 max-w-2xl mx-auto">{t(lang, 'home.equipment_body')}</p>
+    </div>
+
+    {
+      featuredEquip.length > 0 && (
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12 max-w-6xl mx-auto">
+          {featuredEquip.map((e) => (
+            <EquipamentoCard
+              lang={equipLang}
+              slug={entrySlug(e)}
+              name={e.data.name}
+              category={e.data.category}
+              summary={e.data.summary}
+              image={e.data.image}
+              status={e.data.status}
+            />
+          ))}
+        </div>
+      )
+    }
+
+    <div class="text-center mt-10">
+      <a class="btn btn-primary" href={localizedPath(lang, 'equipamentos')}>
+        {t(lang, 'home.cta_equipment_all')}
+      </a>
+    </div>
+  </SectionBand>
+
+  <!-- COMO ACESSAR -->
+  <SectionBand variant="brand">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="section-title text-3xl md:text-4xl">{t(lang, 'home.access_title')}</h2>
+      <div class="h-1 w-16 bg-accent rounded-full mx-auto mt-4"></div>
+      <p class="mt-6 text-lg opacity-90">{t(lang, 'home.access_body')}</p>
+      <a
+        class="btn bg-white text-primary border-none hover:bg-white/90 mt-8"
+        href={localizedPath(lang, 'acesso')}
+      >
+        {t(lang, 'home.cta_access_more')}
+      </a>
+    </div>
+  </SectionBand>
+
+  <!-- NOTÍCIAS -->
+  <SectionBand>
+    <div class="text-center">
+      <h2 class="section-title text-3xl md:text-4xl text-primary">{t(lang, 'home.news_title')}</h2>
+      <div class="section-divider mx-auto mt-4"></div>
+      <p class="mt-4 opacity-80">{t(lang, 'home.news_body')}</p>
+    </div>
+
+    {
+      latest.length === 0 ? (
+        <p class="text-center opacity-70 mt-10">{t(lang, 'news.empty')}</p>
+      ) : (
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12 max-w-6xl mx-auto">
+          {latest.map((n) => (
+            <NoticiaCard
+              lang={newsLang}
+              slug={entrySlug(n)}
+              title={n.data.title}
+              date={n.data.date}
+              excerpt={n.data.excerpt}
+              image={n.data.image}
+            />
+          ))}
+        </div>
+      )
+    }
+
+    <div class="text-center mt-10">
+      <a class="btn btn-outline btn-primary" href={localizedPath(lang, 'noticias')}>
+        {t(lang, 'home.news_more')}
+      </a>
+    </div>
+  </SectionBand>
+
+  <!-- EQUIPE -->
+  <SectionBand variant="muted">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="section-title text-3xl md:text-4xl text-primary">{t(lang, 'home.team_title')}</h2>
+      <div class="section-divider mx-auto mt-4"></div>
+      <p class="mt-6 text-lg opacity-80">{t(lang, 'home.team_body')}</p>
+      <a class="btn btn-primary mt-8" href={localizedPath(lang, 'equipe')}>
+        {t(lang, 'home.cta_team')}
+      </a>
+    </div>
+  </SectionBand>
+
+  <PartnersStrip lang={lang} />
+</BaseLayout>

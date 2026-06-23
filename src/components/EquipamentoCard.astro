@@ -1,0 +1,71 @@
+---
+import { t, type Lang } from '~/i18n/translations';
+import { assetPath, localizedPath } from '~/utils/paths';
+
+type Status = 'disponivel' | 'manutencao' | 'indisponivel';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+  name: string;
+  category?: string;
+  summary?: string;
+  image?: string;
+  status?: Status;
+  headingLevel?: 'h2' | 'h3';
+}
+const {
+  lang,
+  slug,
+  name,
+  category,
+  summary,
+  image,
+  status = 'disponivel',
+  headingLevel = 'h3',
+} = Astro.props;
+const Heading = headingLevel;
+const href = localizedPath(lang, `equipamentos/${slug}`);
+
+const statusClass: Record<Status, string> = {
+  disponivel: 'badge-success',
+  manutencao: 'badge-warning',
+  indisponivel: 'badge-ghost',
+};
+const statusLabel: Record<Status, string> = {
+  disponivel: t(lang, 'equipment.status_available'),
+  manutencao: t(lang, 'equipment.status_maintenance'),
+  indisponivel: t(lang, 'equipment.status_unavailable'),
+};
+---
+
+<article
+  class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow border border-base-300 h-full"
+>
+  {
+    image && (
+      <figure class="aspect-[16/9] overflow-hidden bg-base-200">
+        <img
+          src={assetPath(image)}
+          alt={name}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover"
+        />
+      </figure>
+    )
+  }
+  <div class="card-body">
+    <div class="flex items-center gap-2 flex-wrap">
+      {category && <span class="badge badge-outline badge-sm">{category}</span>}
+      <span class={`badge badge-sm ${statusClass[status]}`}>{statusLabel[status]}</span>
+    </div>
+    <Heading class="card-title text-lg leading-snug">
+      <a href={href} class="link link-hover">{name}</a>
+    </Heading>
+    {summary && <p class="opacity-80 text-sm line-clamp-3">{summary}</p>}
+    <div class="card-actions mt-2">
+      <a href={href} class="link link-primary text-sm">{t(lang, 'equipment.details')} →</a>
+    </div>
+  </div>
+</article>
