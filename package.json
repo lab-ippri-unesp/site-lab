@@ -28,7 +28,7 @@
     "pagefind": "^1.5.0",
     "sharp": "^0.34.0",
     "tailwindcss": "4.1.18",
-    "theme-change": "^2.5.0"
+    "theme-change": "^3.0.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
