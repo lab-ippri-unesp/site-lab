@@ -9,14 +9,14 @@ interface Partner {
   logo?: string;
 }
 
-// TODO(lab): confirmar instituições/financiadores e adicionar os logos em
-// public/imagens/parceiros/ (ex.: unesp.png). Sem logo, o nome aparece como texto.
+// Instituição sede e agências de financiamento. Para usar logos, adicione os arquivos
+// em public/imagens/parceiros/ e informe `logo` abaixo; sem logo, o nome vira chip de texto.
 const PARTNERS: Partner[] = [
   { name: 'UNESP', href: 'https://www2.unesp.br' },
   { name: 'IPPRI', href: 'https://www.ippri.unesp.br' },
   { name: 'FAPESP', href: 'https://fapesp.br' },
   { name: 'CNPq', href: 'https://www.gov.br/cnpq' },
-  { name: 'CAPES', href: 'https://www.gov.br/capes' },
+  { name: 'INCT-INEU', href: 'https://www.inct-ineu.org.br' },
 ];
 
 interface Props {

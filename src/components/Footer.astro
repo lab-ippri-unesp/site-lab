@@ -12,7 +12,14 @@ const year = new Date().getFullYear();
 <footer class="bg-neutral text-neutral-content">
   <div class="container mx-auto px-4 py-12 grid gap-10 md:grid-cols-3 text-sm">
     <div>
-      <p class="font-display text-lg font-bold">{t(lang, 'site.title')}</p>
+      <img
+        src={withBase('imagens/marca/simbolo-branco.svg')}
+        alt=""
+        width="44"
+        height="44"
+        class="h-11 w-11"
+      />
+      <p class="font-display text-lg font-bold mt-3">{t(lang, 'site.title')}</p>
       <p class="mt-3 opacity-80 leading-relaxed">{t(lang, 'site.tagline')}</p>
     </div>
     <nav aria-label={t(lang, 'a11y.nav_footer')}>

@@ -6,9 +6,11 @@ trilíngue (pt/en/es), com modelo de conteúdo **pronto para Directus**.
 Este repositório também serve de **base reutilizável** para os próximos sites do
 ecossistema — ver [`docs/template-e-frota.md`](docs/template-e-frota.md).
 
-> ⚠️ **Estado atual: esqueleto com conteúdo placeholder.** Os textos, a identidade visual
-> (cores, logo, fontes) e os dados (equipe, equipamentos) são exemplos marcados com
-> `TODO(lab)`, prontos para serem substituídos pelo conteúdo oficial.
+> **Identidade visual aplicada** (vinho IPPRI + Poppins) e **conteúdo institucional real**
+> (projeto FAPESP EMU das Humanidades Digitais, gestão e regras de uso). Itens a completar:
+> fotos da equipe, bios detalhadas, traduções de equipamentos (en/es usam fallback para pt)
+> e logos das instituições parceiras. Kit de marca em `public/imagens/marca/` (ver
+> [`docs/identidade-visual.md`](docs/identidade-visual.md)).
 
 ## Stack
 
