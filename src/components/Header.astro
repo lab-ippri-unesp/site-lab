@@ -1,7 +1,8 @@
 ---
 import { t, LANGUAGES, LANG_LABEL, type Lang } from '~/i18n/translations';
-import { localizedPath, withBase } from '~/utils/paths';
+import { localizedPath } from '~/utils/paths';
 import ThemeToggle from '~/components/ThemeToggle.astro';
+import LogoMark from '~/components/LogoMark.astro';
 
 interface Props {
   lang: Lang;
@@ -29,13 +30,7 @@ const navItems = [
         class="flex items-center gap-3"
         aria-label={`${t(lang, 'site.title')} — ${t(lang, 'nav.home')}`}
       >
-        <img
-          src={withBase('imagens/marca/marca.svg')}
-          alt=""
-          width="40"
-          height="40"
-          class="h-10 w-10 shrink-0"
-        />
+        <LogoMark class="h-10 w-10 shrink-0" />
         <span class="leading-tight">
           <span class="block font-display text-base font-bold text-primary">
             Laboratório Multiusuário
