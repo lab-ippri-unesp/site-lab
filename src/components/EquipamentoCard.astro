@@ -1,6 +1,7 @@
 ---
 import { t, type Lang } from '~/i18n/translations';
 import { assetPath, localizedPath } from '~/utils/paths';
+import { logoCorner } from '~/lib/geo';
 
 type Status = 'disponivel' | 'manutencao' | 'indisponivel';
 
@@ -26,6 +27,7 @@ const {
 } = Astro.props;
 const Heading = headingLevel;
 const href = localizedPath(lang, `equipamentos/${slug}`);
+const corner = logoCorner(56, 'br', 4);
 
 const statusClass: Record<Status, string> = {
   disponivel: 'badge-success',
@@ -40,8 +42,11 @@ const statusLabel: Record<Status, string> = {
 ---
 
 <article
-  class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow border border-base-300 h-full"
+  class="card relative overflow-hidden bg-base-100 shadow-sm hover:shadow-md transition-shadow border border-base-300 h-full"
 >
+  <svg class="cardcorner" viewBox="0 0 56 56" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    {corner.map((p, i) => <polygon points={p} class="tri" style={`--i:${i}`} />)}
+  </svg>
   {
     image && (
       <figure class="aspect-[16/9] overflow-hidden bg-base-200">
@@ -69,3 +74,35 @@ const statusLabel: Record<Status, string> = {
     </div>
   </div>
 </article>
+
+<style>
+  .cardcorner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+  }
+  .cardcorner .tri {
+    fill: var(--color-primary);
+    opacity: 0.16;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cardcorner .tri {
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: scale(0.55);
+      opacity: 0.1;
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+      transition-delay: calc(var(--i) * 28ms);
+    }
+    .card:hover .cardcorner .tri,
+    .card:focus-within .cardcorner .tri {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+  }
+</style>

@@ -7,8 +7,7 @@ import rehypeBaseUrl from './src/plugins/rehype-base-url.mjs';
 const base = '/';
 
 export default defineConfig({
-  // TODO(lab): trocar pelo domínio definitivo (ex.: https://lab.ippri.unesp.br)
-  site: 'https://lab.ippri.unesp.br',
+  site: 'https://lab-ippriunesp.org',
   base,
   trailingSlash: 'always',
   output: 'static',

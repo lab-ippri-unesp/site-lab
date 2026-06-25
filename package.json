@@ -20,7 +20,7 @@
     "@astrojs/mdx": "^5.0.0",
     "@astrojs/rss": "^4.0.12",
     "@fontsource/inter": "^5.2.5",
-    "@fontsource/space-grotesk": "^5.2.5",
+    "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "4.1.18",
     "astro": "^6.3.0",
     "astro-pagefind": "^1.8.3",

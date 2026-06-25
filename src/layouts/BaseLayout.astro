@@ -86,7 +86,16 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
         '@type': 'Organization',
         name: siteTitle,
         url: new URL(import.meta.env.BASE_URL, Astro.site).toString(),
-        sameAs: ['https://github.com/lab-ippri-unesp/site-lab'],
+        logo: new URL(
+          `${import.meta.env.BASE_URL}imagens/marca/marca-512.png`.replace(/\/+/g, '/'),
+          Astro.site
+        ).toString(),
+        parentOrganization: {
+          '@type': 'Organization',
+          name: 'IPPRI · Instituto de Políticas Públicas e Relações Internacionais (UNESP)',
+          url: 'https://www.ippri.unesp.br',
+        },
+        sameAs: ['https://www.ippri.unesp.br', 'https://github.com/lab-ippri-unesp/site-lab'],
       })}
     />
 

@@ -2,6 +2,7 @@
 import { t, LANGUAGES, LANG_LABEL, type Lang } from '~/i18n/translations';
 import { localizedPath } from '~/utils/paths';
 import ThemeToggle from '~/components/ThemeToggle.astro';
+import LogoMark from '~/components/LogoMark.astro';
 
 interface Props {
   lang: Lang;
@@ -22,17 +23,22 @@ const navItems = [
 
 <header class="sticky top-0 z-30 shadow-sm">
   <div class="grid grid-cols-1 lg:grid-cols-[minmax(240px,26%)_1fr]">
-    <!-- coluna do logo. TODO(lab): trocar o wordmark de texto por <img> do logo oficial. -->
+    <!-- coluna do logo: símbolo + wordmark da identidade -->
     <div class="bg-base-100 flex items-center justify-center lg:justify-start px-6 py-3">
       <a
         href={localizedPath(lang, '')}
-        class="block leading-tight"
+        class="flex items-center gap-3"
         aria-label={`${t(lang, 'site.title')} — ${t(lang, 'nav.home')}`}
       >
-        <span class="font-display text-lg font-bold text-primary">{t(lang, 'site.title')}</span>
-        <span class="block text-[0.7rem] uppercase tracking-[0.18em] opacity-60"
-          >{t(lang, 'site.institution')}</span
-        >
+        <LogoMark class="h-10 w-10 shrink-0" />
+        <span class="leading-tight">
+          <span class="block font-display text-base font-bold text-primary">
+            Laboratório Multiusuário
+          </span>
+          <span class="block text-[0.7rem] uppercase tracking-[0.18em] opacity-60">
+            {t(lang, 'site.institution')}
+          </span>
+        </span>
       </a>
     </div>
 

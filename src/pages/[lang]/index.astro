@@ -5,6 +5,8 @@ import SectionBand from '~/components/SectionBand.astro';
 import NoticiaCard from '~/components/NoticiaCard.astro';
 import EquipamentoCard from '~/components/EquipamentoCard.astro';
 import PartnersStrip from '~/components/PartnersStrip.astro';
+import HeroMesh from '~/components/HeroMesh.astro';
+import TriDivider from '~/components/TriDivider.astro';
 import { LANGUAGES, t, type Lang } from '~/i18n/translations';
 import { localizedPath } from '~/utils/paths';
 import { entrySlug } from '~/utils/content';
@@ -45,8 +47,9 @@ const featuredEquip = equip
   pathInLang=""
 >
   <!-- HERO -->
-  <section class="brand-gradient text-white">
-    <div class="container mx-auto px-4 py-16 md:py-28">
+  <section class="brand-gradient text-white relative overflow-hidden">
+    <HeroMesh />
+    <div class="container mx-auto px-4 py-16 md:py-28 relative z-10">
       <div class="max-w-3xl">
         <p class="font-bold uppercase tracking-[0.2em] text-sm text-accent">
           {t(lang, 'home.hero_eyebrow')}
@@ -74,6 +77,8 @@ const featuredEquip = equip
       </div>
     </div>
   </section>
+
+  <TriDivider gid="d-hero" bg="var(--color-base-100)" />
 
   <!-- O LABORATÓRIO -->
   <SectionBand>
@@ -136,6 +141,8 @@ const featuredEquip = equip
       </a>
     </div>
   </SectionBand>
+
+  <TriDivider gid="d-acesso" bg="var(--color-base-100)" />
 
   <!-- NOTÍCIAS -->
   <SectionBand>
