@@ -33,6 +33,8 @@ const desc = description ?? t(lang, 'site.tagline');
 
 const canonical = new URL(localizedPath(lang, pathInLang), Astro.site).toString();
 const favicon = `${import.meta.env.BASE_URL}favicon.svg`.replace(/\/+/g, '/');
+const faviconPng = `${import.meta.env.BASE_URL}favicon-32.png`.replace(/\/+/g, '/');
+const appleIcon = `${import.meta.env.BASE_URL}apple-touch-icon.png`.replace(/\/+/g, '/');
 const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 ---
 
@@ -78,6 +80,8 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
 
     <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="icon" type="image/png" sizes="32x32" href={faviconPng} />
+    <link rel="apple-touch-icon" href={appleIcon} />
 
     <script
       type="application/ld+json"

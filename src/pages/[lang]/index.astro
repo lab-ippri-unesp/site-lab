@@ -5,8 +5,7 @@ import SectionBand from '~/components/SectionBand.astro';
 import NoticiaCard from '~/components/NoticiaCard.astro';
 import EquipamentoCard from '~/components/EquipamentoCard.astro';
 import PartnersStrip from '~/components/PartnersStrip.astro';
-import HeroMesh from '~/components/HeroMesh.astro';
-import TriDivider from '~/components/TriDivider.astro';
+import HeroMark from '~/components/HeroMark.astro';
 import { LANGUAGES, t, type Lang } from '~/i18n/translations';
 import { localizedPath } from '~/utils/paths';
 import { entrySlug } from '~/utils/content';
@@ -47,38 +46,40 @@ const featuredEquip = equip
   pathInLang=""
 >
   <!-- HERO -->
-  <section class="brand-gradient text-white relative overflow-hidden">
-    <HeroMesh />
-    <div class="container mx-auto px-4 py-16 md:py-28 relative z-10">
-      <div class="max-w-3xl">
-        <p class="font-bold uppercase tracking-[0.2em] text-sm text-accent">
-          {t(lang, 'home.hero_eyebrow')}
-        </p>
-        <h1 class="font-display text-4xl md:text-6xl font-bold mt-4 leading-[1.05] text-balance">
-          {t(lang, 'home.hero_title')}
-        </h1>
-        <p class="mt-6 text-lg md:text-xl opacity-90 text-balance">
-          {t(lang, 'home.hero_subtitle')}
-        </p>
-        <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
-          <a
-            class="btn btn-lg bg-white text-primary border-none hover:bg-white/90"
-            href={localizedPath(lang, 'equipamentos')}
-          >
-            {t(lang, 'home.cta_equipment')}
-          </a>
-          <a
-            class="btn btn-lg btn-outline border-white text-white hover:bg-white/10 hover:border-white"
-            href={localizedPath(lang, 'acesso')}
-          >
-            {t(lang, 'home.cta_access')}
-          </a>
+  <section class="brand-gradient text-white">
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
+        <div class="shrink-0">
+          <HeroMark />
+        </div>
+        <div class="max-w-2xl">
+          <p class="font-bold uppercase tracking-[0.2em] text-sm text-accent">
+            {t(lang, 'home.hero_eyebrow')}
+          </p>
+          <h1 class="font-display text-4xl md:text-6xl font-bold mt-4 leading-[1.05] text-balance">
+            {t(lang, 'home.hero_title')}
+          </h1>
+          <p class="mt-6 text-lg md:text-xl opacity-90 text-balance">
+            {t(lang, 'home.hero_subtitle')}
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+            <a
+              class="btn btn-lg bg-white text-primary border-none hover:bg-white/90"
+              href={localizedPath(lang, 'equipamentos')}
+            >
+              {t(lang, 'home.cta_equipment')}
+            </a>
+            <a
+              class="btn btn-lg btn-outline border-white text-white hover:bg-white/10 hover:border-white"
+              href={localizedPath(lang, 'acesso')}
+            >
+              {t(lang, 'home.cta_access')}
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <TriDivider gid="d-hero" bg="var(--color-base-100)" />
 
   <!-- O LABORATÓRIO -->
   <SectionBand>
@@ -141,8 +142,6 @@ const featuredEquip = equip
       </a>
     </div>
   </SectionBand>
-
-  <TriDivider gid="d-acesso" bg="var(--color-base-100)" />
 
   <!-- NOTÍCIAS -->
   <SectionBand>
