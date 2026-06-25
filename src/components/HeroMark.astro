@@ -1,0 +1,62 @@
+---
+/**
+ * Marca triangular do laboratório (mesmo motivo do letreiro / favicon) em grande,
+ * para o hero. Os triângulos se MONTAM no carregamento, formando a marca, e depois
+ * ficam "vivos" (respiração suave em onda). Decorativo e gentil com reduced-motion.
+ */
+import { logoCorner } from '~/lib/geo';
+
+const tris = logoCorner(100, 'tl', 4);
+---
+
+<svg
+  class="heromark"
+  viewBox="0 0 100 100"
+  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {tris.map((p, i) => <polygon points={p} class="tri" style={`--i:${i}`} fill="#ffffff" />)}
+</svg>
+
+<style>
+  .heromark {
+    display: block;
+    width: clamp(168px, 24vw, 300px);
+    height: auto;
+    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.2));
+  }
+  .tri {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tri {
+      animation:
+        mark-assemble 640ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards,
+        mark-live 3.8s ease-in-out infinite;
+      /* monta em sequência; depois entra a "respiração" com fase por triângulo */
+      animation-delay:
+        calc(var(--i) * 70ms),
+        calc(1000ms + var(--i) * 130ms);
+    }
+  }
+  @keyframes mark-assemble {
+    from {
+      opacity: 0;
+      transform: scale(0.12) translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes mark-live {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.58;
+    }
+  }
+</style>
