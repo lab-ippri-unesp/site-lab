@@ -59,27 +59,27 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: #1a0f0e; /* marrom-vinho muito escuro */
-  --color-base-200: #241413;
-  --color-base-300: #33201e;
-  --color-base-content: #f0e7e2;
+  --color-base-100: #1a1614; /* charcoal quente (menos "barro") */
+  --color-base-200: #221c1a;
+  --color-base-300: #46393a; /* borda mais clara: cards "saltam" do fundo */
+  --color-base-content: #f3ede9;
 
-  --color-primary: #d68a7f; /* vinho clareado p/ contraste no escuro */
+  --color-primary: #ef9d84; /* terracota mais viva p/ títulos, links e botões */
   --color-primary-content: #2a0f0c;
 
-  --color-secondary: #d9a59c;
-  --color-secondary-content: #1a0f0e;
+  --color-secondary: #e0b0a6;
+  --color-secondary-content: #1a1614;
 
-  --color-accent: #e0897c;
+  --color-accent: #f2a98f;
   --color-accent-content: #2a0f0c;
 
-  --color-neutral: #120a09;
-  --color-neutral-content: #f0e7e2;
+  --color-neutral: #14100f;
+  --color-neutral-content: #f3ede9;
 
   --color-info: #7fa8c4;
-  --color-success: #54b07e;
-  --color-warning: #d9a154;
-  --color-error: #d96b60;
+  --color-success: #46c489;
+  --color-warning: #e0a35a;
+  --color-error: #e07a6a;
 
   --radius-selector: 0.5rem;
   --radius-field: 0.5rem;

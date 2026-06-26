@@ -1,62 +1,78 @@
 ---
 /**
- * Marca triangular do laboratório (mesmo motivo do letreiro / favicon) em grande,
- * para o hero. Os triângulos se MONTAM no carregamento, formando a marca, e depois
- * ficam "vivos" (respiração suave em onda). Decorativo e gentil com reduced-motion.
+ * Marca triangular do laboratório (motivo do letreiro / favicon) no hero, em
+ * estilo "wireframe": triângulos de contorno que se DESENHAM no carregamento,
+ * com alguns preenchidos que depois respiram. Decorativo e gentil com
+ * prefers-reduced-motion (estática, já desenhada/preenchida, quando reduzido).
  */
 import { logoCorner } from '~/lib/geo';
 
 const tris = logoCorner(100, 'tl', 4);
+const filled = (i: number) => i % 4 === 0;
 ---
 
-<svg
-  class="heromark"
-  viewBox="0 0 100 100"
-  aria-hidden="true"
-  xmlns="http://www.w3.org/2000/svg"
->
-  {tris.map((p, i) => <polygon points={p} class="tri" style={`--i:${i}`} fill="#ffffff" />)}
+<svg class="heromark" viewBox="0 0 100 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  {
+    tris.map((p, i) => (
+      <polygon
+        points={p}
+        class={filled(i) ? 'tri tri--fill' : 'tri'}
+        pathLength="100"
+        style={`--i:${i}`}
+      />
+    ))
+  }
 </svg>
 
 <style>
   .heromark {
     display: block;
-    width: clamp(168px, 24vw, 300px);
+    width: clamp(170px, 24vw, 300px);
     height: auto;
-    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.2));
+    overflow: visible;
   }
   .tri {
-    transform-box: fill-box;
-    transform-origin: center;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
   }
+  .tri--fill {
+    fill: rgba(255, 255, 255, 0.92);
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .tri {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: hm-draw 700ms ease calc(var(--i) * 85ms) forwards;
+    }
+    .tri--fill {
+      fill: rgba(255, 255, 255, 0);
       animation:
-        mark-assemble 640ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards,
-        mark-live 3.8s ease-in-out infinite;
-      /* monta em sequência; depois entra a "respiração" com fase por triângulo */
-      animation-delay:
-        calc(var(--i) * 70ms),
-        calc(1000ms + var(--i) * 130ms);
+        hm-draw 700ms ease calc(var(--i) * 85ms) forwards,
+        hm-fill 520ms ease calc(900ms + var(--i) * 85ms) forwards,
+        hm-breath 4.2s ease-in-out calc(1700ms + var(--i) * 85ms) infinite;
     }
   }
-  @keyframes mark-assemble {
-    from {
-      opacity: 0;
-      transform: scale(0.12) translateY(-6px);
-    }
+  @keyframes hm-draw {
     to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
+      stroke-dashoffset: 0;
     }
   }
-  @keyframes mark-live {
+  @keyframes hm-fill {
+    to {
+      fill: rgba(255, 255, 255, 0.92);
+    }
+  }
+  @keyframes hm-breath {
     0%,
     100% {
-      opacity: 1;
+      fill: rgba(255, 255, 255, 0.92);
     }
     50% {
-      opacity: 0.58;
+      fill: rgba(255, 255, 255, 0.5);
     }
   }
 </style>
