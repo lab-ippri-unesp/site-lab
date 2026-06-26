@@ -28,6 +28,11 @@ Depois de definir o domínio, atualizar:
 > em `astro.config.mjs`. Como os caminhos de assets/links passam por `withBase`/`assetPath`
 > e pelo plugin `rehype-base-url`, o site continua funcionando sob qualquer base.
 
+## Autenticação (opcional)
+
+Para colocar o site (ou só os previews) atrás de login — padrão **diariobr**:
+**Cloudflare Access + Authentik**. Passo a passo em [`autenticacao.md`](autenticacao.md).
+
 ## Qualidade antes do deploy
 
 `npm run ci` roda o mesmo portão do CI: `astro check` (typecheck) + `eslint` + `build`.

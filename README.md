@@ -60,6 +60,7 @@ docs/                 # arquitetura, conteúdo, deploy, directus, template-e-fro
 - [`docs/arquitetura.md`](docs/arquitetura.md) — visão geral técnica
 - [`docs/conteudo.md`](docs/conteudo.md) — como editar páginas, notícias, equipe e equipamentos
 - [`docs/deploy.md`](docs/deploy.md) — deploy no Cloudflare Pages
+- [`docs/autenticacao.md`](docs/autenticacao.md) — autenticação via Cloudflare Access + Authentik (padrão diariobr)
 - [`docs/directus.md`](docs/directus.md) — **integração futura com o Directus**
 - [`docs/template-e-frota.md`](docs/template-e-frota.md) — **reuso entre os sites do ecossistema**
 
