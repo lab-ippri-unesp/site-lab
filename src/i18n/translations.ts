@@ -49,10 +49,8 @@ const pt: Dict = {
   'common.know_more': 'Saiba mais',
   'common.edit_github': 'Editar esta página no GitHub',
 
-  'home.hero_eyebrow': 'Laboratório Multiusuário',
-  'home.hero_title': 'Infraestrutura computacional para as Humanidades Digitais',
-  'home.hero_subtitle':
-    'Processamento (CPU e GPU), armazenamento escalável e ambientes de análise para coletar, processar e visualizar grandes volumes de dados — com acesso presencial e remoto.',
+  'home.hero_title': 'Laboratório Multiusuário IPPRI/UNESP',
+  'home.hero_subtitle': 'Infraestrutura computacional para as Humanidades.',
   'home.cta_about': 'Conhecer o laboratório',
   'home.cta_equipment': 'Ver equipamentos',
   'home.cta_access': 'Como solicitar uso',
@@ -145,10 +143,8 @@ const en: Dict = {
   'common.know_more': 'Learn more',
   'common.edit_github': 'Edit this page on GitHub',
 
-  'home.hero_eyebrow': 'Multi-user Laboratory',
-  'home.hero_title': 'Computing infrastructure for the Digital Humanities',
-  'home.hero_subtitle':
-    'CPU and GPU processing, scalable storage and analysis environments to collect, process and visualize large volumes of data — on-site and remote access.',
+  'home.hero_title': 'IPPRI/UNESP Multi-user Laboratory',
+  'home.hero_subtitle': 'Computing infrastructure for the Humanities.',
   'home.cta_about': 'About the laboratory',
   'home.cta_equipment': 'View equipment',
   'home.cta_access': 'Request access',
@@ -241,10 +237,8 @@ const es: Dict = {
   'common.know_more': 'Saber más',
   'common.edit_github': 'Editar esta página en GitHub',
 
-  'home.hero_eyebrow': 'Laboratorio Multiusuario',
-  'home.hero_title': 'Infraestructura computacional para las Humanidades Digitales',
-  'home.hero_subtitle':
-    'Procesamiento (CPU y GPU), almacenamiento escalable y entornos de análisis para recolectar, procesar y visualizar grandes volúmenes de datos — acceso presencial y remoto.',
+  'home.hero_title': 'Laboratorio Multiusuario IPPRI/UNESP',
+  'home.hero_subtitle': 'Infraestructura computacional para las Humanidades.',
   'home.cta_about': 'Conocer el laboratorio',
   'home.cta_equipment': 'Ver equipamiento',
   'home.cta_access': 'Solicitar acceso',
