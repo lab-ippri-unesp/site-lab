@@ -53,11 +53,16 @@ const featuredEquip = equip
           <HeroMark />
         </div>
         <div class="max-w-2xl">
-          <h1 class="font-display text-4xl md:text-6xl font-bold leading-[1.05] text-balance">
-            {t(lang, 'home.hero_title')}
+          <!-- lockup do letreiro: nome empilhado, instituição em rosé -->
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.08] tracking-tight">
+            <span class="block">{t(lang, 'home.hero_name_1')}</span>
+            <span class="block">{t(lang, 'home.hero_name_2')}</span>
+            <span class="block text-[#E9B8AC]">{t(lang, 'home.hero_inst')}</span>
           </h1>
-          <p class="mt-6 text-lg md:text-xl opacity-90 text-balance">
-            {t(lang, 'home.hero_subtitle')}
+          <p class="mt-6 text-lg md:text-xl text-[#F4E7E3]">
+            {t(lang, 'home.hero_subtitle_pre')}<strong class="font-semibold text-white"
+              >{t(lang, 'home.hero_subtitle_hl')}</strong
+            >
           </p>
           <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3">
             <a
