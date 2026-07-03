@@ -49,7 +49,24 @@ horizontais usam Poppins — abra-os em qualquer ferramenta vetorial com a fonte
 
 ## No site
 
-- Cabeçalho: `marca.svg` + wordmark (Poppins).
+- Cabeçalho: símbolo inline (`LogoMark`, monta no carregamento) + wordmark (Poppins).
 - Rodapé: `simbolo-branco.svg`.
-- Favicon: `public/favicon.svg` (= símbolo).
+- Favicon: `public/favicon.svg` (= símbolo) + `favicon-32.png` e `apple-touch-icon.png`.
 - `JSON-LD`/Open Graph: `marca-512.png`.
+
+## Sistema de uso da geometria
+
+A malha triangular da marca pode aparecer em **tratamentos** diferentes — isso fortalece a
+identidade **desde que cada tratamento tenha um papel fixo** (nunca uso aleatório):
+
+| Tratamento         | Papel                                                | Onde                          |
+| ------------------ | ---------------------------------------------------- | ----------------------------- |
+| **Mosaico tonal**  | Protagonista: a marca "viva" em destaque             | Hero da home (`HeroMark`)     |
+| **Watermark**      | Textura discreta de fundo (opacidade ≤ 10%)          | Páginas internas, 404         |
+| **Wireframe**      | Acento pequeno, detalhe fino                         | Cantos de cards, estados vazios |
+| **Sólido (marca)** | A marca em si, sem variação                          | Cabeçalho, rodapé, favicon    |
+
+Regras invariáveis em qualquer tratamento: **mesma malha** (triângulos retângulos no canto,
+hipotenusa para o centro), **mesmos ângulos** (nunca rotacionar), **mesmas cores** (branco,
+rosé `#E9B8AC` e o vinho `#7A2E2C`). Animações sempre decorativas (`aria-hidden`) e
+respeitando `prefers-reduced-motion`.

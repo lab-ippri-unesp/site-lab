@@ -1,62 +1,71 @@
 ---
 /**
- * Marca triangular do laboratório (mesmo motivo do letreiro / favicon) em grande,
- * para o hero. Os triângulos se MONTAM no carregamento, formando a marca, e depois
- * ficam "vivos" (respiração suave em onda). Decorativo e gentil com reduced-motion.
+ * Marca triangular do laboratório (motivo do letreiro / favicon) no hero, em
+ * tratamento "mosaico tonal": triângulos em tons variados de branco, com a
+ * diagonal em rosé da identidade. Montam-se no carregamento e depois uma onda
+ * de brilho percorre o mosaico. Decorativo (aria-hidden) e gentil com
+ * prefers-reduced-motion (mosaico estático quando reduzido).
  */
-import { logoCorner } from '~/lib/geo';
+import { logoCornerCells } from '~/lib/geo';
 
-const tris = logoCorner(100, 'tl', 4);
+const N = 5; // malha mais rica que a da marca (N=4) — mesmo motivo, mais detalhe
+const cells = logoCornerCells(100, N);
+
+const ROSE = '#E9B8AC';
+const tone = (r: number) => Math.max(0.35, 1 - r * 0.13);
 ---
 
-<svg
-  class="heromark"
-  viewBox="0 0 100 100"
-  aria-hidden="true"
-  xmlns="http://www.w3.org/2000/svg"
->
-  {tris.map((p, i) => <polygon points={p} class="tri" style={`--i:${i}`} fill="#ffffff" />)}
+<svg class="heromark" viewBox="0 0 100 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  {
+    cells.map((t, i) => (
+      <polygon
+        points={t.pts}
+        class="tri"
+        fill={t.r === t.c ? ROSE : '#ffffff'}
+        style={`--i:${i}; --d:${t.r + t.c}; --base:${tone(t.r).toFixed(2)}`}
+      />
+    ))
+  }
 </svg>
 
 <style>
   .heromark {
     display: block;
-    width: clamp(168px, 24vw, 300px);
+    width: clamp(170px, 24vw, 300px);
     height: auto;
-    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.18));
   }
   .tri {
+    opacity: var(--base);
     transform-box: fill-box;
     transform-origin: center;
   }
   @media (prefers-reduced-motion: no-preference) {
     .tri {
       animation:
-        mark-assemble 640ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards,
-        mark-live 3.8s ease-in-out infinite;
-      /* monta em sequência; depois entra a "respiração" com fase por triângulo */
-      animation-delay:
-        calc(var(--i) * 70ms),
-        calc(1000ms + var(--i) * 130ms);
+        hm-in 560ms cubic-bezier(0.2, 0.7, 0.3, 1) calc(var(--i) * 55ms) backwards,
+        hm-wave 5.2s ease-in-out calc(1300ms + var(--d) * 240ms) infinite;
     }
   }
-  @keyframes mark-assemble {
+  @keyframes hm-in {
     from {
       opacity: 0;
-      transform: scale(0.12) translateY(-6px);
+      transform: scale(0.35);
     }
     to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
+      opacity: var(--base);
+      transform: scale(1);
     }
   }
-  @keyframes mark-live {
+  /* onda diagonal de brilho: cada triângulo acende na sua vez (fase = r+c) */
+  @keyframes hm-wave {
     0%,
+    18%,
     100% {
-      opacity: 1;
+      opacity: var(--base);
     }
-    50% {
-      opacity: 0.58;
+    8% {
+      opacity: 1;
     }
   }
 </style>

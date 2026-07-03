@@ -39,6 +39,31 @@ export function meshField(width: number, height: number, cell: number): FieldTri
   return out;
 }
 
+export interface CornerCell {
+  /** "x,y x,y x,y" pronto para <polygon points> */
+  pts: string;
+  /** linha e coluna na malha (para tons/fases de animação) */
+  r: number;
+  c: number;
+}
+
+/**
+ * Como logoCorner, mas com linha/coluna de cada triângulo — útil para
+ * tratamentos tonais (opacidade/cor por posição) e animações em onda.
+ */
+export function logoCornerCells(size: number, n = 4): CornerCell[] {
+  const u = size / n;
+  const cells: CornerCell[] = [];
+  for (let r = 0; r < n; r++) {
+    for (let c = 0; c < n - r; c++) {
+      const x = c * u;
+      const y = r * u;
+      cells.push({ pts: `${x},${y} ${x + u},${y} ${x},${y + u}`, r, c });
+    }
+  }
+  return cells;
+}
+
 /**
  * Motivo do canto do logo (malha triangular) ancorado num dos quatro cantos.
  * 'tl' = como na marca; 'tr'/'bl'/'br' = espelhamentos.
