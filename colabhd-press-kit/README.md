@@ -202,6 +202,16 @@ A neutralidade é um requisito de projeto desta identidade, não um acaso:
    de triângulos (Lab IPPRI, UNESP), espirais e grades de pontos (CPPS) e a
    tríade vermelho-azul-branco (INCT-INEU / temática EUA).
 
+## Variações permitidas
+
+O símbolo admite desconstruções, acentos de cor alternativos e combinações
+plurais em contextos expressivos — o catálogo normativo completo, organizado
+por camadas de uso (institucional, expressiva, co-branding e miniatura), está
+no **Anexo A**: [`variacoes.md`](variacoes.md), com versões visuais em
+[`apresentacao/variacoes-permitidas.html`](apresentacao/variacoes-permitidas.html)
+e [`apresentacao/variacoes-permitidas.pdf`](apresentacao/variacoes-permitidas.pdf).
+Tudo fora desse catálogo requer aprovação prévia.
+
 ## Usos incorretos
 
 - Não rotacionar nem inclinar o símbolo (a cerquilha é sempre ortogonal).
@@ -217,11 +227,13 @@ A neutralidade é um requisito de projeto desta identidade, não um acaso:
 ```
 colabhd-press-kit/
 ├── README.md              ← este manual
+├── variacoes.md           ← Anexo A: catálogo das variações permitidas (formas e cores)
 ├── logos/                 ← SVGs (texto em curvas) + PNGs em logos/png/ + PDFs em logos/pdf/
 ├── cores/                 ← paleta.json, paleta.css, tema-daisyui.css
 ├── tipografia/            ← fontes.css (IBM Plex: papéis e instalação)
 ├── modelos/               ← perfil-github.md (README de perfil da organização)
-├── apresentacao/          ← press-kit.html (apresentação navegável do kit)
+├── apresentacao/          ← press-kit.html · estudo-variacoes.html (configurador)
+│                            · variacoes-permitidas.html/.pdf (Anexo A visual)
 └── ferramentas/           ← gerar-kit.mjs (gerador reprodutível dos arquivos de marca)
 ```
 
