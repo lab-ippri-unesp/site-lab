@@ -27,14 +27,17 @@ próprio. É a camada — não o gosto do momento — que define o que é permit
 
 ## 2 · Formas permitidas
 
-Cinco formas, uma gramática: fios de pontas definidas que se entrelaçam em
+Quatro formas, uma gramática: fios de pontas redondas que se entrelaçam em
 trama simples. O entrelaçamento — cada fio por cima uma vez, por baixo outra —
 nunca é alterado.
+
+> A forma "cata-vento" e as pontas retas foram avaliadas e **excluídas do
+> catálogo**: a leitura rotacional de braços aproxima-se de simbologia
+> sensível — risco de associação que uma marca não pode carregar.
 
 | Forma | Descrição | Camadas |
 |---|---|---|
 | **tecida** | A forma principal: quatro fios completos | Todas |
-| **cata-vento** | Cada fio segue além de um só cruzamento | Expressiva |
 | **aberta** | Eixos afastados (30/70), mais ar no centro | Expressiva |
 | **vazada** | Centro removido, os cruzamentos viram moldura | Expressiva |
 | **alinhavo** | Fios em pontilhado de costura, trama em processo | Expressiva |
@@ -45,17 +48,15 @@ tecida abre ou fecha a sequência.
 
 ## 3 · Estilos de desenho permitidos
 
-Três eixos independentes, aplicáveis a qualquer forma. Dentro de uma mesma
-peça, o estilo não muda.
+As pontas são sempre redondas e o vão dos cruzamentos é fixo (4,5). O único
+eixo de estilo é o peso — e dentro de uma mesma peça, o peso não muda.
 
 | Eixo | Opções | Camadas |
 |---|---|---|
-| Pontas | **redondas** (padrão) · retas | Retas só na expressiva |
-| Espessura | fina (10) · **média (14)** · robusta (18) | Fina/robusta só na expressiva |
-| Vão | **padrão (4,5)** · amplo (7,5) | Amplo na expressiva e na miniatura |
+| Espessura | **média (14)** · robusta (18) | Robusta só na expressiva |
+| Vão | fixo em 4,5 — a versão `-mini` usa 7,5 por legibilidade | Miniatura |
 
-A camada institucional usa sempre pontas redondas, espessura média e vão
-padrão. A repetição do símbolo como padrão gráfico (textura, estampa) é
+A camada institucional usa sempre a espessura média. A repetição do símbolo como padrão gráfico (textura, estampa) é
 permitida na camada expressiva, com opacidade máxima de 10% quando atrás de
 texto.
 
@@ -112,7 +113,7 @@ contextos, degrada para a versão de um fio ou monocromática.
 | Camada | Formas | Pontas | Espessura · vão | Cores |
 |---|---|---|---|---|
 | Institucional | tecida | redondas | média · padrão | mono · fio violeta |
-| Expressiva | as cinco | redondas ou retas | fina, média ou robusta · padrão ou amplo | mono · um fio (6 acentos) · plural (5 combinações) |
+| Expressiva | as quatro | redondas | média ou robusta · padrão | mono · um fio (6 acentos) · plural (5 combinações) |
 | Co-branding | tecida | redondas | média · padrão | mono · fio do parceiro |
 | Miniatura ≤ 32 px | tecida `-mini` | redondas | média · amplo (7,5) | mono · fio violeta |
 
@@ -123,6 +124,7 @@ contextos, degrada para a versão de um fio ou monocromática.
 - Gradientes, sombras, contornos, texturas ou transparências no símbolo.
 - Cores fora deste catálogo, ou mais de um acento fora das combinações plurais nomeadas.
 - Plural em co-branding, em miniaturas ou junto ao wordmark.
-- Misturar formas, pontas ou espessuras diferentes na mesma peça.
+- Misturar formas ou espessuras diferentes na mesma peça.
+- Compor a malha em leitura rotacional (cata-vento) ou desenhar os fios com pontas retas.
 - Usar as cores reservadas dos parceiros (vinho, ciano) fora de co-branding.
 - Recompor os logotipos com outras fontes ou redesenhar a geometria à mão.

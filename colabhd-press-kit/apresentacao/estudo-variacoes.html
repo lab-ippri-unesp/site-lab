@@ -74,11 +74,12 @@
   <header>
     <p class="eyebrow">Estudo · Identidade visual · complementa o press kit v1.0.0</p>
     <h1>A cerquilha desconstruída</h1>
-    <p class="tese">Cinco desconstruções da trama, sete acentos de cor e variações
-    de estilo — combináveis no configurador abaixo. A gramática permanece a
-    mesma: fios de pontas definidas que se entrelaçam; o que muda é o quanto a
-    cerquilha se abre. Escolha uma combinação e o kit completo é regerado a
-    partir dela.</p>
+    <p class="tese">Quatro desconstruções da trama, sete acentos de cor e
+    variações de peso — combináveis no configurador abaixo. A gramática
+    permanece a mesma: fios de pontas redondas que se entrelaçam; o que muda é
+    o quanto a cerquilha se abre. Formas de leitura rotacional (cata-vento) e
+    pontas retas foram avaliadas e excluídas por risco de associação indevida.
+    Escolha uma combinação e o kit completo é regerado a partir dela.</p>
   </header>
 
   <section id="configurador">
@@ -95,7 +96,7 @@
           <div class="chips" role="group" aria-label="Escolher cor de acento" id="g-cor"></div>
         </div>
         <div class="grupo">
-          <p class="rotulo">Pontas · Espessura · Vão · Fundo</p>
+          <p class="rotulo">Espessura · Fundo</p>
           <div class="chips" role="group" aria-label="Escolher estilo" id="g-estilo"></div>
         </div>
         <p class="spec" id="spec"></p>
@@ -126,9 +127,9 @@
 
   <section id="estilos">
     <div class="cabeca"><span class="num">04</span><h2>Estilos</h2></div>
-    <p>Variações de desenho sobre a mesma geometria: pontas, pesos, respiro dos
-    cruzamentos, fundo e a versão <strong>plural</strong> — cada fio em uma cor,
-    para materiais de eventos e redes (nunca como marca principal).</p>
+    <p>Variações de desenho sobre a mesma geometria: peso, fundo e a versão
+    <strong>plural</strong> — cada fio em uma cor, para materiais de eventos e
+    redes (nunca como marca principal). As pontas são sempre redondas.</p>
     <div class="prancha" id="prancha-estilos"></div>
     <p class="nota">O press kit v1.0.0 permanece intacto: este estudo é uma camada
     de exploração. Definida a combinação preferida, todos os arquivos do kit
@@ -156,11 +157,6 @@
       titulo: 'tecida', desc: 'a versão do kit: quatro fios completos',
       axes: { h1: 36, h2: 64, v1: 36, v2: 64 },
       spans: { h1: [[10, 90]], h2: [[10, 90]], v1: [[10, 90]], v2: [[10, 90]] },
-    },
-    catavento: {
-      titulo: 'cata-vento', desc: 'cada fio segue além de um só cruzamento: rotação implícita',
-      axes: { h1: 36, h2: 64, v1: 36, v2: 64 },
-      spans: { h1: [[10, 71]], h2: [[29, 90]], v1: [[29, 90]], v2: [[10, 71]] },
     },
     aberta: {
       titulo: 'aberta', desc: 'eixos afastados: mais ar no centro da trama',
@@ -202,17 +198,13 @@
   };
 
   function trama(cfg) {
-    const { variante, t, gap, pontas, acento, plural, escuro } = cfg;
+    const { variante, t, gap, acento, plural, escuro } = cfg;
     const V = VARIANTES[variante];
     const r = t / 2, br = r + gap;
     const cobre = (s, coord) => V.spans[s].some(([a, b]) => a - 0.01 <= coord && coord <= b + 0.01);
 
-    const capsH = (x1, x2, y) => pontas === 'reta'
-      ? `M ${x1} ${y - r} H ${x2} V ${y + r} H ${x1} Z`
-      : `M ${x1} ${y - r} H ${x2} A ${r} ${r} 0 0 1 ${x2} ${y + r} H ${x1} A ${r} ${r} 0 0 1 ${x1} ${y - r} Z`;
-    const capsV = (x, y1, y2) => pontas === 'reta'
-      ? `M ${x - r} ${y1} H ${x + r} V ${y2} H ${x - r} Z`
-      : `M ${x + r} ${y1} V ${y2} A ${r} ${r} 0 0 1 ${x - r} ${y2} V ${y1} A ${r} ${r} 0 0 1 ${x + r} ${y1} Z`;
+    const capsH = (x1, x2, y) => `M ${x1} ${y - r} H ${x2} A ${r} ${r} 0 0 1 ${x2} ${y + r} H ${x1} A ${r} ${r} 0 0 1 ${x1} ${y - r} Z`;
+    const capsV = (x, y1, y2) => `M ${x + r} ${y1} V ${y2} A ${r} ${r} 0 0 1 ${x - r} ${y2} V ${y1} A ${r} ${r} 0 0 1 ${x + r} ${y1} Z`;
 
     const base = escuro ? PAPEL : TINTA;
     const corAcento = acento === 'mono' ? base : (escuro ? ACENTOS[acento].claro : ACENTOS[acento].hex);
@@ -243,21 +235,21 @@
   }
 
   // ---------- configurador ----------
-  const estado = { variante: 'tecida', acento: 'violeta', pontas: 'redonda', t: 14, gap: 4.5, escuro: false, plural: false };
+  const estado = { variante: 'tecida', acento: 'violeta', t: 14, gap: 4.5, escuro: false, plural: false };
 
   const palco = document.getElementById('palco');
   const spec = document.getElementById('spec');
   const baixar = document.getElementById('baixar');
 
   function render() {
-    const svg = trama({ variante: estado.variante, t: estado.t, gap: estado.gap, pontas: estado.pontas, acento: estado.acento, plural: estado.plural, escuro: estado.escuro });
+    const svg = trama({ variante: estado.variante, t: estado.t, gap: estado.gap, acento: estado.acento, plural: estado.plural, escuro: estado.escuro });
     palco.innerHTML = svg;
     palco.style.background = estado.escuro ? FUNDO_ESCURO : '#ffffff';
     const a = ACENTOS[estado.acento];
     spec.textContent = [
       VARIANTES[estado.variante].titulo,
       estado.plural ? 'plural' : (estado.acento === 'mono' ? 'mono' : `fio ${a.nome} ${estado.escuro ? a.claro : a.hex}`),
-      `pontas ${estado.pontas}s`, `espessura ${estado.t}`, `vão ${estado.gap}`,
+      `espessura ${estado.t}`,
       estado.escuro ? 'sobre tinta' : 'sobre papel',
     ].join(' · ');
     baixar.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
@@ -289,13 +281,8 @@
     'cor', (v) => { estado.plural = v === '__plural__'; if (!estado.plural) estado.acento = v; });
 
   const estilos = [
-    { label: 'redondas', grupo: 'pontas', valor: ['pontas', 'redonda'], ativo: true },
-    { label: 'retas', grupo: 'pontas', valor: ['pontas', 'reta'] },
-    { label: 'fina', grupo: 'esp', valor: ['t', 10] },
     { label: 'média', grupo: 'esp', valor: ['t', 14], ativo: true },
     { label: 'robusta', grupo: 'esp', valor: ['t', 18] },
-    { label: 'vão padrão', grupo: 'vao', valor: ['gap', 4.5], ativo: true },
-    { label: 'vão amplo', grupo: 'vao', valor: ['gap', 7.5] },
     { label: 'papel', grupo: 'fundo', valor: ['escuro', false], ativo: true },
     { label: 'tinta', grupo: 'fundo', valor: ['escuro', true] },
   ];
@@ -333,11 +320,8 @@
   }
 
   const pe = document.getElementById('prancha-estilos');
-  const base = { variante: 'tecida', t: 14, gap: 4.5, pontas: 'redonda', acento: 'violeta', plural: false, escuro: false };
-  pe.appendChild(tile(trama({ ...base, pontas: 'reta' }), 'pontas retas', 'mais editorial e rígida', false));
-  pe.appendChild(tile(trama({ ...base, t: 10 }), 'fina', 'leve, para usos grandes', false));
+  const base = { variante: 'tecida', t: 14, gap: 4.5, acento: 'violeta', plural: false, escuro: false };
   pe.appendChild(tile(trama({ ...base, t: 18 }), 'robusta', 'presença de ícone', false));
-  pe.appendChild(tile(trama({ ...base, gap: 7.5 }), 'vão amplo', 'respiro da versão -mini', false));
   pe.appendChild(tile(trama({ ...base, plural: true }), 'plural', 'cada fio, uma voz', false));
   pe.appendChild(tile(trama({ ...base, escuro: true }), 'sobre tinta', 'fundos escuros', true));
 
