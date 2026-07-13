@@ -1,0 +1,54 @@
+/* Tipografia do Colaboratório de Humanidades Digitais — v1.0.0
+   Superfamília IBM Plex (licença SIL OFL 1.1):
+   - IBM Plex Serif  → títulos e display (a voz das humanidades)
+   - IBM Plex Sans   → texto corrido e interface
+   - IBM Plex Mono   → código, dados e o handle "colabhd"
+
+   Opção A — self-hosted via Fontsource (recomendada; mesmo padrão dos parceiros):
+     npm i @fontsource/ibm-plex-serif @fontsource/ibm-plex-sans @fontsource/ibm-plex-mono
+   e descomente os imports abaixo.
+
+   Opção B — Google Fonts:
+     https://fonts.google.com/share?selection.family=IBM+Plex+Mono:wght@400;500|IBM+Plex+Sans:wght@400;500;600|IBM+Plex+Serif:wght@400;600
+*/
+
+/*
+@import '@fontsource/ibm-plex-serif/400.css';
+@import '@fontsource/ibm-plex-serif/600.css';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+*/
+
+:root {
+  --colabhd-fonte-display: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --colabhd-fonte-texto: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --colabhd-fonte-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', monospace;
+}
+
+/* Papéis tipográficos */
+.colabhd-display {
+  font-family: var(--colabhd-fonte-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.colabhd-texto {
+  font-family: var(--colabhd-fonte-texto);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.colabhd-sobretitulo {
+  /* linha de apoio do logotipo e sobretítulos de seção */
+  font-family: var(--colabhd-fonte-texto);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.colabhd-mono {
+  font-family: var(--colabhd-fonte-mono);
+  font-weight: 500;
+}

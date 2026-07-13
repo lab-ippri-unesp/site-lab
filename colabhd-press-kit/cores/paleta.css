@@ -1,0 +1,37 @@
+/* Paleta do Colaboratório de Humanidades Digitais — v1.0.0
+   Princípio: monocromático primeiro (Tinta sobre Papel); o violeta Fio é acento.
+   Todos os pares texto/fundo documentados cumprem WCAG AA (≥ 4.5:1). */
+
+:root {
+  /* marca */
+  --colabhd-tinta: #23262b;       /* cor principal: texto e símbolo */
+  --colabhd-papel: #ffffff;       /* fundo principal */
+  --colabhd-fio: #5b46c2;         /* acento violeta (links, destaques) — 6.77:1 sobre papel */
+
+  /* neutros */
+  --colabhd-grafite: #4b5058;     /* texto secundário — 8.12:1 sobre papel */
+  --colabhd-cinza: #6a707b;       /* texto terciário — 4.98:1 sobre papel */
+  --colabhd-prata: #c9ccd2;       /* ícones inativos, decoração */
+  --colabhd-entrelinha: #e6e7ea;  /* bordas e divisores */
+  --colabhd-margem: #f4f5f6;      /* fundo alternativo claro */
+
+  /* funcionais — só para estados de interface, nunca superfícies de marca */
+  --colabhd-info: #3d5a99;        /* 6.73:1 sobre papel */
+  --colabhd-sucesso: #2e7d5b;     /* 5.00:1 sobre papel */
+  --colabhd-alerta: #8a6116;      /* 5.52:1 sobre papel */
+  --colabhd-erro: #a8324f;        /* 6.49:1 sobre papel */
+}
+
+/* Tema escuro: aplique via media query ou [data-theme="dark"] */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colabhd-tinta: #f1f1ee;     /* "papel escuro": texto sobre fundo escuro — 14.90:1 */
+    --colabhd-papel: #1b1d22;     /* fundo do tema escuro */
+    --colabhd-fio: #a99beb;       /* violeta claro — 6.89:1 sobre o fundo escuro */
+    --colabhd-grafite: #b9bdc4;
+    --colabhd-cinza: #9298a2;
+    --colabhd-prata: #4b5058;
+    --colabhd-entrelinha: #33373e;
+    --colabhd-margem: #22252b;
+  }
+}

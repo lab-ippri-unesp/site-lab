@@ -1,0 +1,72 @@
+{
+  "nome": "Paleta do Colaboratório de Humanidades Digitais",
+  "versao": "1.0.0",
+  "principio": "Monocromático primeiro: a identidade vive em Tinta sobre Papel. O violeta Fio é acento — nunca mais que ~10% de uma composição.",
+  "marca": {
+    "tinta": {
+      "hex": "#23262B",
+      "uso": "Cor principal da marca; texto; símbolo sobre fundos claros",
+      "contrasteSobrePapel": "15.18:1"
+    },
+    "papel": {
+      "hex": "#FFFFFF",
+      "uso": "Fundo principal (tema claro); símbolo sobre fundos escuros"
+    },
+    "fio": {
+      "hex": "#5B46C2",
+      "uso": "Acento violeta: links, destaques, o fio da trama (tema claro)",
+      "contrasteSobrePapel": "6.77:1"
+    },
+    "fioClaro": {
+      "hex": "#A99BEB",
+      "uso": "Acento violeta para fundos escuros",
+      "contrasteSobreTintaFundo": "6.89:1"
+    }
+  },
+  "neutros": {
+    "tintaFundo": {
+      "hex": "#1B1D22",
+      "uso": "Fundo do tema escuro; fundo do avatar"
+    },
+    "grafite": {
+      "hex": "#4B5058",
+      "uso": "Texto secundário",
+      "contrasteSobrePapel": "8.12:1"
+    },
+    "cinza": {
+      "hex": "#6A707B",
+      "uso": "Texto terciário, legendas",
+      "contrasteSobrePapel": "4.98:1",
+      "contrasteSobreMargem": "4.56:1"
+    },
+    "prata": {
+      "hex": "#C9CCD2",
+      "uso": "Ícones inativos, decoração (nunca texto)"
+    },
+    "entrelinha": {
+      "hex": "#E6E7EA",
+      "uso": "Bordas, divisores, fios de separação"
+    },
+    "margem": {
+      "hex": "#F4F5F6",
+      "uso": "Fundo alternativo claro (cards, faixas); tom frio, deliberadamente oposto ao greige quente do Lab IPPRI"
+    },
+    "papelEscuro": {
+      "hex": "#F1F1EE",
+      "uso": "Texto e marca sobre fundos escuros",
+      "contrasteSobreTintaFundo": "14.90:1"
+    }
+  },
+  "funcionais": {
+    "descricao": "Exclusivas de estados de interface (alertas, formulários, badges); nunca em superfícies de marca ou divulgação. Matizes deslocados dos territórios cromáticos dos parceiros: info em azul 220° (longe do petróleo/ciano do CPPS), erro em carmim frio 350° (longe do vinho/terracota do Lab IPPRI).",
+    "info": { "hex": "#3D5A99", "contrasteSobrePapel": "6.73:1" },
+    "sucesso": { "hex": "#2E7D5B", "contrasteSobrePapel": "5.00:1" },
+    "alerta": { "hex": "#8A6116", "contrasteSobrePapel": "5.52:1" },
+    "erro": { "hex": "#A8324F", "contrasteSobrePapel": "6.49:1" }
+  },
+  "coresReservadasDosParceiros": {
+    "descricao": "Nunca usar como cor de marca do Colaboratório; permitidas apenas como cor do fio em materiais de co-branding com o respectivo parceiro (ver README, seção Convivência com marcas parceiras).",
+    "vinhoLabIppri": "#7A2E2C",
+    "cianoCpps": "#00ACF0"
+  }
+}

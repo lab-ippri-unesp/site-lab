@@ -1,0 +1,16 @@
+{
+  "name": "colabhd-press-kit-ferramentas",
+  "private": true,
+  "description": "Gerador reprodutível dos arquivos de marca do Colaboratório de Humanidades Digitais",
+  "type": "module",
+  "scripts": {
+    "gerar": "node gerar-kit.mjs ../"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "@fontsource/ibm-plex-sans": "5.2.8",
+    "@fontsource/ibm-plex-serif": "5.2.7",
+    "opentype.js": "2.0.0",
+    "sharp": "0.35.3"
+  }
+}
