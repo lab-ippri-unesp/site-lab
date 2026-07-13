@@ -1,0 +1,40 @@
+/* Paleta do Laboratório Multiusuário do IPPRI/UNESP — v1.0.0
+   Cópia distribuível; a fonte de verdade é src/styles/global.css (tema lab). */
+
+:root {
+  /* marca */
+  --lab-vinho: #7a2e2c;          /* primária — 9.31:1 sobre branco */
+  --lab-vinho-medio: #5e2421;    /* passo central do gradiente */
+  --lab-vinho-profundo: #3a1715; /* rodapé, ponta do gradiente */
+  --lab-terracota: #9c4a40;      /* secundária — 6.06:1 */
+  --lab-tijolo: #b5544a;         /* destaque — 4.85:1 */
+  --lab-rose: #e9b8ac;           /* diagonal do mosaico tonal */
+
+  /* neutros */
+  --lab-texto: #2a1a17;          /* 16.69:1 sobre branco */
+  --lab-greige: #f5f1ea;         /* fundo alternativo */
+  --lab-greige-escuro: #e7ded2;  /* bordas */
+  --lab-branco: #ffffff;
+  --lab-offwhite: #f0e7e2;       /* wordmark sobre fundos escuros */
+
+  /* funcionais — alerta requer conteúdo escuro (2.96:1 com branco) */
+  --lab-info: #3f6f8f;
+  --lab-sucesso: #2f7d5a;
+  --lab-alerta: #c8893a;
+  --lab-erro: #b3322b;
+
+  --lab-gradiente: linear-gradient(120deg, #7a2e2c 0%, #5e2421 60%, #3a1715 100%);
+}
+
+/* Tema escuro (labdark) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lab-vinho: #ef9d84;        /* primária clara — 8.41:1 sobre o fundo */
+    --lab-terracota: #e0b0a6;
+    --lab-tijolo: #f2a98f;
+    --lab-texto: #f3ede9;        /* 15.49:1 sobre o fundo */
+    --lab-branco: #1a1614;       /* fundo charcoal quente */
+    --lab-greige: #221c1a;
+    --lab-greige-escuro: #46393a;
+  }
+}

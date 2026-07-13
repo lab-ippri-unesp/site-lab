@@ -1,0 +1,67 @@
+/* Temas DaisyUI 5 do Laboratório Multiusuário do IPPRI/UNESP — v1.0.0
+   Cópia distribuível dos temas do site (fonte de verdade: src/styles/global.css).
+   Cole em um global.css após `@plugin 'daisyui';`. */
+
+@plugin "daisyui/theme" {
+  name: "lab";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f5f1ea; /* greige quente (parede do letreiro) */
+  --color-base-300: #e7ded2;
+  --color-base-content: #2a1a17; /* quase-preto quente */
+
+  --color-primary: #7a2e2c; /* vinho IPPRI */
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #9c4a40; /* terracota */
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #b5544a; /* tijolo claro */
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3a1715; /* vinho profundo (rodapé) */
+  --color-neutral-content: #f5f1ea;
+
+  --color-info: #3f6f8f;
+  --color-success: #2f7d5a;
+  --color-warning: #c8893a;
+  --color-error: #b3322b;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+}
+@plugin "daisyui/theme" {
+  name: "labdark";
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #1a1614; /* charcoal quente (menos "barro") */
+  --color-base-200: #221c1a;
+  --color-base-300: #46393a; /* borda mais clara: cards "saltam" do fundo */
+  --color-base-content: #f3ede9;
+
+  --color-primary: #ef9d84; /* terracota mais viva p/ títulos, links e botões */
+  --color-primary-content: #2a0f0c;
+
+  --color-secondary: #e0b0a6;
+  --color-secondary-content: #1a1614;
+
+  --color-accent: #f2a98f;
+  --color-accent-content: #2a0f0c;
+
+  --color-neutral: #14100f;
+  --color-neutral-content: #f3ede9;
+
+  --color-info: #7fa8c4;
+  --color-success: #46c489;
+  --color-warning: #e0a35a;
+  --color-error: #e07a6a;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+}

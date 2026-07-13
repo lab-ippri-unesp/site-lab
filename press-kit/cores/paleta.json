@@ -1,0 +1,40 @@
+{
+  "nome": "Paleta do Laboratório Multiusuário do IPPRI/UNESP",
+  "versao": "1.0.0",
+  "fonteDeVerdade": "src/styles/global.css (temas lab/labdark); cores amostradas do letreiro físico e do logotipo do IPPRI",
+  "marca": {
+    "vinho": { "hex": "#7A2E2C", "uso": "Primária: símbolo, links, botões, wordmark", "contrasteSobreBranco": "9.31:1" },
+    "vinhoMedio": { "hex": "#5E2421", "uso": "Passo central do gradiente de marca" },
+    "vinhoProfundo": { "hex": "#3A1715", "uso": "Rodapé; ponta escura do gradiente" },
+    "terracota": { "hex": "#9C4A40", "uso": "Secundária", "contrasteSobreBranco": "6.06:1" },
+    "tijolo": { "hex": "#B5544A", "uso": "Destaque (divisores de seção)", "contrasteSobreBranco": "4.85:1" },
+    "rose": { "hex": "#E9B8AC", "uso": "Diagonal do mosaico tonal; texto decorativo sobre vinho (5.29:1 sobre vinho)" }
+  },
+  "neutros": {
+    "quaseNegro": { "hex": "#2A1A17", "uso": "Texto (tema claro)", "contrasteSobreBranco": "16.69:1" },
+    "greige": { "hex": "#F5F1EA", "uso": "Fundo alternativo (base-200)" },
+    "greigeEscuro": { "hex": "#E7DED2", "uso": "Bordas (base-300)" },
+    "branco": { "hex": "#FFFFFF", "uso": "Fundo principal; texto sobre vinho (9.31:1)" },
+    "offwhite": { "hex": "#F0E7E2", "uso": "Wordmark sobre fundos escuros (13.12:1 sobre vinho profundo)" }
+  },
+  "temaEscuro": {
+    "fundo": { "hex": "#1A1614", "uso": "base-100 (charcoal quente)" },
+    "fundoAlt": { "hex": "#221C1A", "uso": "base-200" },
+    "borda": { "hex": "#46393A", "uso": "base-300" },
+    "texto": { "hex": "#F3EDE9", "uso": "base-content", "contrasteSobreFundo": "15.49:1" },
+    "primaria": { "hex": "#EF9D84", "uso": "Títulos, links e botões", "contrasteSobreFundo": "8.41:1" },
+    "secundaria": { "hex": "#E0B0A6", "uso": "secondary" },
+    "destaque": { "hex": "#F2A98F", "uso": "accent" }
+  },
+  "funcionais": {
+    "info": { "hex": "#3F6F8F", "contrasteSobreBranco": "5.41:1" },
+    "sucesso": { "hex": "#2F7D5A", "contrasteSobreBranco": "5.00:1" },
+    "alerta": { "hex": "#C8893A", "contrasteSobreBranco": "2.96:1", "observacao": "Abaixo de AA com conteúdo branco — usar sempre com conteúdo escuro #2A1A17 (5.64:1)" },
+    "erro": { "hex": "#B3322B", "contrasteSobreBranco": "6.16:1" }
+  },
+  "gradienteDeMarca": "linear-gradient(120deg, #7A2E2C 0%, #5E2421 60%, #3A1715 100%)",
+  "coresDaGeometria": {
+    "descricao": "A malha triangular usa somente estas três cores, em qualquer tratamento",
+    "cores": ["#FFFFFF", "#E9B8AC", "#7A2E2C"]
+  }
+}
